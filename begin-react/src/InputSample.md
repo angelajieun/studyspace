@@ -114,21 +114,4 @@ function InputSample(){
   )
 }
 export default InputSample;
-
-```
-
-<small><i><b></b></i></small>
-```js
-```
-
-<small><i><b></b></i></small>
-```js
-```
-
-<small><i><b></b></i></small>
-```js
-```
-
-<small><i><b></b></i></small>
-```js
 ```
