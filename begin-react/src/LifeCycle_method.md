@@ -11,6 +11,9 @@ https://codesandbox.io/s/currying-bash-mrkjb?fontsize=14
 이미지 출처 : 
 http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
 
+이미지 참고 url 2 : 
+https://velog.io/@kyusung/%EB%A6%AC%EC%95%A1%ED%8A%B8-%EA%B5%90%EA%B3%BC%EC%84%9C-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8%EC%99%80-%EB%9D%BC%EC%9D%B4%ED%94%84%EC%82%AC%EC%9D%B4%ED%81%B4-%EC%9D%B4%EB%B2%A4%ED%8A%B8
+
 ```js
 /* 1. 마운트 될때 발생하는 생명주기 */
 constructor // 생성자 함수

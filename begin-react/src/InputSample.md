@@ -115,3 +115,4 @@ function InputSample(){
 }
 export default InputSample;
 ```
+##### useRef는 .current 프로퍼티로 전달된 인자(initialValue)로 초기화된 변경 가능한 ref 객체를 반환합니다.

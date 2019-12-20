@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-function User({ user, onRemove, onToggle}){
+const User = React.memo(function User({ user, onRemove, onToggle}){
   const { username, email, id, active} = user;
+  useEffect(() => {
+  },[user]);
   return (
     <div>
       <b
@@ -15,7 +17,7 @@ function User({ user, onRemove, onToggle}){
       <button onClick={() => onRemove(id)}>삭제</button>
     </div>
   )
-}
+});
 function UserList({ users, onRemove, onToggle }) {
   return (
     <div>
@@ -30,4 +32,8 @@ function UserList({ users, onRemove, onToggle }) {
   )
 }
 
-export default UserList;
+export default React.memo(UserList,
+                          // (prevProps, nextProps) => prevProps.users === nextProps.users
+                          // false를 반환하면 리랜더링을 하게 하는거
+                          // true 를 반환하면 리랜더링 안하게 하는거
+                          );
