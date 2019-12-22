@@ -210,11 +210,33 @@ function Counter(){
 }
 export default Counter;
 ```
-
-
-
-
-## Hook
-<small><i><b></b></i></small>
+## Custom Hook 만들기
+<small><i><b>자주 사용하게 되는것을 Hook으로 만들어서 사용 </b></i></small>
 ```js
+const onChange = (e) => {
+  const  {name, value} = e.terget;
+  setInputs({...inputs, [name] : value});
+}
+```
+
+#### 커스텀 훅을 만들때는 use.. 시작해서 함수를 만들어 주고, return 을 통해 원하는걸 반환시키면 된다.
+<small>맨 위에 import 시켜줘서 사용.</small>
+```js
+import { useState, useCallback} from 'react';
+
+function useInputs(initialForm){
+  const {form, setForm} = useState(initialForm);
+  const onChange = useCallback(e => {
+    const {name, value} = e.target;
+    setForm(form => ({
+      ...form,
+     [name] : value
+    },[]));
+  });
+  const reset = useCallback(() => setForm(initialForm), [initialForm]);
+
+  return [form, onChange, reset];
+}
+
+export default useInputs;
 ```
