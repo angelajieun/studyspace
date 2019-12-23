@@ -5,10 +5,78 @@ const [state, setState] = useState(0);
 ```
 
 ## useRef Hook
-<small><i><b>useRef로 특정 Dom 선택하기</b></i></small>
+<small><i><b>useRef로 특정 Dom 선택하기</b></i></small><br>
+  예를 들어 포커스를 어느 특정 부분에 놓고 싶을때
 ```js
 const refContainer = useRef(initialValue);
 ```
+```js
+// useRef는 .current 프로퍼티로 전달된 인자(initialValue)로 초기화된 변경 가능한 ref 객체를 반환합니다.
+import React, { useState } from 'react';
+
+function InputSample(){
+  const nameInput = useRef();
+
+  const onReset = () => {
+    nameInput.current.focus();
+  }
+
+  return (
+    <div>
+      <input name="name" placeholder="이름" onChange={onChange} value={name} ref={nameInput}/>
+      <button onClick={onReset}>초기화</button>
+    </div>
+  )
+}
+export default InputSample;
+```
+### useRef로 컴포넌트 안의 변수 만들기
+#### 변수의 값을 초기화하고 다시 만들고 싶지 않을때
+<small><i> 값을 변경하려면 useState 를 사용해야 되는데 그러면 새로 리랜더링 되는데 <b>값을 변경했을때 그것 때문에 다시 리랜더링 하고 싶지 않을때 useRef 를 사용</b></i></small>
+
+<small>setTimeout, setInterval 을 통해서 만들어진 id,
+외부 라이브러리를 사용하여 생성된 인스턴스,
+scroll 위치 등을 기억하려고 할 때 사용.</small>
+
+#### useRef 를 사용하면 값을 변경해도 리랜더링 되지 않는다는것을 기억해야한다.
+```js
+// App.js code
+import React, { Component, useRef } from 'react';
+import UserList from './UserList';
+class App extends Component {
+  render() {
+    const users = [
+      {
+        id: 1,
+        username: 'velopert',
+        email: 'public.velopert@gmail.com'
+      },
+      {
+        id: 2,
+        username: 'tester',
+        email: 'tester@example.com'
+      },
+      {
+        id: 3,
+        username: 'liz',
+        email: 'liz@example.com'
+      }
+    ];
+
+    const nextId = useRef(4); // 컴포넌트가 리랜더링 되고 얘는 4임. id:3에 끝나서 그 다음 4부터 시작하게 초기값 4라고 써준거임
+    const onCreate = () => {
+      console.log(nextId.current); // 4가 나옴 사용하면 그 다음 +1 됨
+      nextId.current += 1;
+    }
+
+    return (
+      <UserList users={ users }/>
+    )
+  }
+}
+export default App;
+```
+
 ## useEffect Hook
 <small><i><b>마운트,언마운트,업데이트시 사용가능</b></i></small>
 ##### 화면에 나타날때 마운트, 사라질때 언마운트

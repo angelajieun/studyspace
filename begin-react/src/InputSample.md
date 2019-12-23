@@ -86,33 +86,14 @@ const nextInputs = {
   ...inputs,
   [name] : value,
 }
+
 setInputs(nextInputs);
+
 // 결국 아래와 코드가 같음.
+
 setInputs({
   ...inputs,
   [name]: value,
 });
+
 ```
-## useRef Hook
-<small><i><b>useRef로 특정 Dom 선택하기</b></i></small>
- 예를 들어 포커스를 어느 특정 부분에 놓고 싶을때
-```js
-import React, { useState } from 'react';
-
-function InputSample(){
-  const nameInput = useRef();
-
-  const onReset = () => {
-    nameInput.current.focus();
-  }
-
-  return (
-    <div>
-      <input name="name" placeholder="이름" onChange={onChange} value={name} ref={nameInput}/>
-      <button onClick={onReset}>초기화</button>
-    </div>
-  )
-}
-export default InputSample;
-```
-##### useRef는 .current 프로퍼티로 전달된 인자(initialValue)로 초기화된 변경 가능한 ref 객체를 반환합니다.

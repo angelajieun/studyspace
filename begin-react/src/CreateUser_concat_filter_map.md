@@ -127,3 +127,54 @@ const onToggle = id => {
   onClick={() => onToggle(id)}
 >{username}</b>
 ```
+
+## 배열 렌더링하기
+### array.map();
+<small><i><b>map을 사용할때는 고유의값 key 값을 설정해야한다.</b></i></small>
+없는경우 map의 index를 사용할~~수는 있지만 사용안하는것이 좋음.
+<b>key 값이 있어야 랜더링 할때 그 값을 보고 새로운 것에 대해 그것만 랜더링을 할 수 있기 때문</b>
+```js
+// UserList.js code
+import React from 'react';
+
+function User({user}){
+  return (
+    <div>
+      <b>{user.username}</b><br />
+      <span>{user.email}</span>
+    </div>
+  )
+}
+function UserList() {
+  const users = [
+    {
+      id: 1,
+      username: 'velopert',
+      email: 'public.velopert@gmail.com'
+    },
+    {
+      id: 2,
+      username: 'tester',
+      email: 'tester@example.com'
+    },
+    {
+      id: 3,
+      username: 'liz',
+      email: 'liz@example.com'
+    }
+  ];
+
+  return (
+    <div>
+      {
+        users.map(
+          // user => (<User user={user} />) // 이렇게만 쓰면 console error 에서 unique "key" 라고 뜬다
+          user => (<User user={user} key={user.id} />)
+          // 권장 x  : (user, index) => (<User user={user} key={index} />)
+        )
+      }
+    </div>
+  )
+}
+export default UserList;
+```
