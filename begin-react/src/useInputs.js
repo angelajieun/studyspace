@@ -1,7 +1,6 @@
 import { useReducer, useCallback } from 'react';
 
 function reducer(state, action) {
-
   switch (action.type) {
     case 'CHANGE':
       return {
@@ -9,7 +8,7 @@ function reducer(state, action) {
         [action.name]: action.value
       };
     case 'RESET':
-      return Object.key(state).reduce((acc, current) => {
+      return Object.keys(state).reduce((acc, current) => {
         acc[current] = '';
         return acc;
       }, {});
@@ -20,8 +19,7 @@ function reducer(state, action) {
 
 
 function useInputs(initialForm) {
-  const { form, dispatch } = useReducer(reducer, initialForm);
-
+  const [ form, dispatch ] = useReducer(reducer, initialForm);
   const onChange = useCallback(e => {
     const { name, value } = e.target;
     dispatch({
@@ -31,9 +29,9 @@ function useInputs(initialForm) {
     });
   }, []);
   // const reset = useCallback(() => setForm(initialForm), [initialForm]);
-  const reset = useCallback(() => dispatch({ type: 'RESET' }), []);
+  const onReset = useCallback(() => dispatch({ type: 'RESET' }), []);
 
-  return [form, onChange, reset];
+  return [form, onChange, onReset];
 }
 
 export default useInputs;

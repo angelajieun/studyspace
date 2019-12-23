@@ -33,10 +33,8 @@ const initialState = {
 function reducer(state, action) {
   switch (action.type) {
     case 'CREATE_USER':
-      // input 을 초기값으로 설정
       return {
-        inputs: initialState.inputs,
-        users: state.users.concat(action.user), // 모르겠음
+        users: state.users.concat(action.user),
       }
     case 'TOGGLE_USER':
       return {
@@ -60,13 +58,11 @@ function reducer(state, action) {
 export const UserDispatch = createContext(null);
 
 function App() {
-
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const [form, onChange, reset] = useInputs({
+  const [{ username, email }, onChange, onReset] = useInputs({
     username: '',
     email: '',
   });
-  const { username, email } = form;
+  const [state, dispatch] = useReducer(reducer, initialState);
   const { users } = state;
   const nextId = useRef(4);
 
@@ -80,8 +76,8 @@ function App() {
       }
     });
     nextId.current += 1;
-    reset();
-  }, [username, email, reset]); // 위에서 값이 변한것을 참조를 하기때문
+    onReset();
+  }, [username, email, onReset]); // 위에서 값이 변한것을 참조를 하기때문
 
   const count = useMemo(() => countActiveUsers(users), [users]);
 
