@@ -1,0 +1,36 @@
+/* :global .checkbox{
+  // global 로 선언
+} */
+:local .checkbox {
+  /* CSS MODULE 를 사용하지 않는 곳에서도 앞에 LOCAL 로 써서 사용 가능 */
+}
+.checkbox {
+  display:flex;
+  align-items: center;
+}
+.checkbvox label {
+  cursor: pointer;
+}
+.checkbox input {
+  position: absolute;
+  width:0;
+  height:0;
+  opacity: 0;
+}
+.checkbox span {
+  font-size:1.125rem;
+  font-weight:bold;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  /* 아이콘의 크기는 폰트 사이즈로 조정 가능 */
+  font-size: 2rem;
+  margin-right: 0.25rem;
+  color: #adb5bd;
+}
+
+.checked {
+  color: #339af0;
+}
