@@ -6,7 +6,7 @@ const TodoTemplateBlock = styled.div`
   flex-direction:column;  
   width:512px;
   height:768px;
-  positin:relative;
+  position:relative;
   background-color:#fff;
   border-radius:20px;
   box-shadow:0 0 8px rgba(0,0,0,.04);
@@ -16,7 +16,9 @@ const TodoTemplateBlock = styled.div`
 
 function Todotemplate({ children }) {
   return (
-    <TodoTemplateBlock>{children}</TodoTemplateBlock>
+    <React.Fragment>
+      <TodoTemplateBlock>{children}</TodoTemplateBlock>
+    </React.Fragment>
   );
 }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useTodoState } from '../TodoContext';
 
 const TodoHeadBlock = styled.div`
   padding : 48px 32px 24px;
@@ -20,9 +21,12 @@ const TodoHeadBlock = styled.div`
     margin-top:40px;
     font-weight:bold;
   }
-
 `
 function TodoHead() {
+  const todos = useTodoState();
+  // console.log(todos);
+  // const undoneTasks = todos.filter();
+  // console.log(todos.map());
   return (
     <TodoHeadBlock>
       <h1>2019.12.25</h1>
