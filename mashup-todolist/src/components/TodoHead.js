@@ -28,7 +28,7 @@ function TodoHead() {
   // const undoneTasks = todos.filter();
   // console.log(todos.map());
   return (
-    <TodoHeadBlock>
+    <TodoHeadBlock style={TodoHeadBlock.block}>
       <h1>2019.12.25</h1>
       <p className="day">수요일</p>
       <p className="taskes-left">오늘 해야할 일 2개</p>
